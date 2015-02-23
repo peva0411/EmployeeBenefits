@@ -1,0 +1,56 @@
+﻿
+<form class="form-horizontal" ng-submit="vm.save()">
+        <fieldset>
+            <legend><span ng-show="vm.updating">Update </span> <span ng-hide="vm.updating">Create </span> Employee Benefit</legend>
+            
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">First Name</label>
+                    <div class="col-md-10">
+                        <input type="text" id="firstName" ng-model="vm.employee.firstName" ng-change="vm.getPreviewCost()" placeholder="First Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Last Name</label>
+                    <div class="col-md-10">
+                        <input type="text" id="lastName" ng-model="vm.employee.lastName" placeholder="Last Name" />
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-4">
+                <div class="panel panel-primary cost-preview">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cost Preview</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h2>{{ vm.cost | currency}}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <legend >Dependents</legend>
+                    
+                    <div class="row" ng-repeat="dependent in vm.employee.dependents">
+                        <div class="dependent-item">
+                            <div class="col-md-2"><label>First Name</label></div>
+                            <div class="col-md-3"><input type="text" ng-change="vm.getPreviewCost()" ng-model="dependent.firstName" /></div>
+                            <div class="col-md-2"><label>Last Name</label></div>
+                            <div class="col-md-3"><input type="text" ng-model="dependent.lastName" /></div>
+                            <div class="col-md-1"><button ng-click="vm.removeDependent(dependent)" class="btn btn-xs btn-danger">Remove</button></div>
+                        </div>
+                    </div>   
+
+                    <button type="button" class="btn btn-sm" ng-click="vm.addDependent()">Add Dependent</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" value="Save"/>
+                </div>
+            </div>
+
+        </fieldset>
+</form>

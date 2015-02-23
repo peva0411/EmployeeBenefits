@@ -1,0 +1,29 @@
+﻿<div class="container">
+    <h1>Paychecks</h1>
+    <div class="row">
+        <form class="form-inline col-md-12">
+            <div class="form-group">
+                <label>Pay period</label>
+                <input type="text" ng-change="vm.getPayChecks()" ng-model="vm.payPeriod"/>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="paycheck in vm.payChecks">
+                        <td>{{paycheck.fullName}}</td>
+                        <td>{{paycheck.amount | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
